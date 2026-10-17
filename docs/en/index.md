@@ -24,7 +24,7 @@ Public report of the workgroup of the [Institut du Numérique Responsable](https
 | Questionnaire to send to stakeholders, without the criteria (English) | [Excel](../assets/downloads/questionnaire-en.xlsx) |
 | Questionnaire to send to stakeholders, without the criteria (French) | [Excel](../assets/downloads/questionnaire-fr.xlsx) |
 
-PDFs, workbooks and data are rebuilt automatically whenever the text changes: they always match this site.
+Each change to the text triggers a rebuild of the PDFs, workbooks and data, so the files you download match this site.
 
 ## Where to start?
 
@@ -35,7 +35,7 @@ PDFs, workbooks and data are rebuilt automatically whenever the text changes: th
 
 ## Contribute
 
-The guide evolves with feedback from its users. INR members and anyone interested can propose a correction or an improvement on the [GitHub repository](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes): every page of this site has an "Edit" link. Proposals are reviewed by the workgroup before publication. See the [contribution guide](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes/blob/main/CONTRIBUTING.md).
+The guide evolves with feedback from its users. INR members and anyone interested can propose a correction or an improvement on the [GitHub repository](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes): every page of this site has an "Edit" link. The workgroup reviews each proposal before publication. See the [contribution guide](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes/blob/main/CONTRIBUTING.md).
 
 ## Cite this guide
 

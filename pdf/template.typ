@@ -10,22 +10,21 @@
 #set page(
   paper: "a4",
   margin: (x: 2.2cm, top: 2.2cm, bottom: 2.4cm),
-  footer: context {
-    if counter(page).get().first() > 1 [
-      #set text(size: 8pt, fill: luma(90))
-      #grid(
-        columns: (1fr, auto),
-        align: (left + horizon, right + horizon),
-        [$footer$],
-        counter(page).display(),
-      )
-    ]
-  },
+  footer: context [
+    #set text(size: 8pt, fill: luma(90))
+    #grid(
+      columns: (1fr, auto),
+      align: (left + horizon, right + horizon),
+      [$footer$],
+      counter(page).display(),
+    )
+  ],
 )
 
 #show heading: set text(font: "Caladea", fill: brand)
 #show heading.where(level: 1): it => {
-  pagebreak(weak: true)
+  // New page per chapter; the outline's own title (not outlined) stays in place.
+  if it.outlined { pagebreak(weak: true) }
   set text(size: 20pt)
   block(below: 1.1em, it)
 }

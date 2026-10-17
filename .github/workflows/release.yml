@@ -21,14 +21,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.13"
       - run: pip install -r requirements.txt
       - run: python scripts/guide.py check
+      - name: Vérifier que l'étiquette correspond à la version du guide
+        run: |
+          v="$(python scripts/guide.py version)"
+          if [ "v$v" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Étiquette $GITHUB_REF_NAME, mais CITATION.cff indique la version $v. Mettez à jour CITATION.cff, CHANGELOG.md et la page « À propos »."
+            exit 1
+          fi
       - name: Installer pandoc et Typst
         run: |
-          curl -sSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          curl -fsSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
           sudo dpkg -i pandoc.deb
-          curl -sSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" | tar -xJ
+          curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" | tar -xJ
           sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
       - name: Générer les livrables
         run: |

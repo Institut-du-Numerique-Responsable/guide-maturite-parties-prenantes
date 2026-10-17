@@ -5,7 +5,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Les
 ## [1.2] – 2026-10-17
 
 ### Ajouté
-- Édition bilingue français / anglais en Markdown, publiée automatiquement sous forme de site, de PDF, de grilles Excel (évaluateur) et de questionnaires Excel (parties prenantes), ainsi qu'en JSON et CSV.
+- Édition bilingue français / anglais en Markdown, que GitHub Actions publie sous forme de site, de PDF, de grilles Excel (évaluateur) et de questionnaires Excel (parties prenantes), ainsi qu'en JSON et CSV.
 - Contrôle automatique de la cohérence de la grille (totaux par question et par chapitre, parité FR/EN).
 - Section « Comment citer ce guide » et fichier `CITATION.cff`.
 

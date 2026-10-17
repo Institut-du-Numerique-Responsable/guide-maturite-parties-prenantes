@@ -7,7 +7,7 @@
 
 ## Ce que contient le dépôt
 
-Le texte du guide, en **Markdown**, est la source unique. À chaque modification de `main`, la chaîne de publication produit automatiquement :
+Le texte du guide, en **Markdown**, est la source unique. À chaque modification de `main`, GitHub Actions produit :
 
 | Livrable | Français | Anglais |
 |---|---|---|
@@ -32,7 +32,7 @@ mkdocs.yml             site bilingue (MkDocs Material + mkdocs-static-i18n)
 
 ## Contribuer
 
-Les adhérents de l'INR et toute personne intéressée peuvent proposer des corrections, des traductions ou des évolutions de critères, directement depuis le navigateur. Les propositions sont relues par le groupe de travail avant publication. Voir [CONTRIBUTING.md](CONTRIBUTING.md) et le [code de conduite](CODE_OF_CONDUCT.md).
+Les adhérents de l'INR et toute personne intéressée peuvent proposer des corrections, des traductions ou des évolutions de critères depuis leur navigateur. Le groupe de travail relit chaque proposition avant publication. Voir [CONTRIBUTING.md](CONTRIBUTING.md) et le [code de conduite](CODE_OF_CONDUCT.md).
 
 ## Licence et citation
 
@@ -49,6 +49,6 @@ Voir aussi [CITATION.cff](CITATION.cff) et la liste des [contributeurs](CONTRIBU
 
 ## English
 
-**Evaluate and influence the Sustainable IT maturity of your stakeholders**: 10 families of criteria, 48 open questions and a weighted grid, published by the Institut du Numérique Responsable (INR) and the European Institutes for Sustainable IT (ISIT). The Markdown text in `docs/en/` and `docs/fr/` is the single source; the website, PDFs, Excel grids, questionnaires and open data are rebuilt automatically on every change.
+**Evaluate and influence the Sustainable IT maturity of your stakeholders**: 10 families of criteria, 48 open questions and a weighted grid, published by the Institut du Numérique Responsable (INR) and the European Institutes for Sustainable IT (ISIT). The Markdown text in `docs/en/` and `docs/fr/` is the single source; GitHub Actions rebuilds the website, PDFs, Excel grids, questionnaires and open data on every change.
 
-Content is licensed under **CC BY-SA 4.0**: any reuse must **cite the Institut du Numérique Responsable** (see [CITATION.cff](CITATION.cff)). Scripts are under MIT. Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) (in French; issues and pull requests in English are welcome too).
+Content is licensed under **CC BY-SA 4.0**: any reuse must **cite the Institut du Numérique Responsable** (see [CITATION.cff](CITATION.cff)). Scripts are under MIT. To contribute, read [CONTRIBUTING.md](CONTRIBUTING.md) (in French; issues and pull requests in English are welcome too).

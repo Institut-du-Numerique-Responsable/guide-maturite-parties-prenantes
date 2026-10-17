@@ -25,7 +25,7 @@ import guide
 
 BRAND = "00668B"
 LIGHT = "E6F1F5"
-VERSION = "1.2"
+VERSION = guide.version()
 URL = "https://institutnr.org/guide-maturite-parties-prenantes"
 REPO = "https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes"
 
@@ -47,7 +47,7 @@ TEXT = {
         date="Date :",
         total="Total",
         radar="Maturité par famille de critères",
-        no_rationale="Voir la raison d'être de la question équivalente au chapitre 5.",
+        no_rationale="Voir la raison d'être de la question équivalente au chapitre 5 et l'introduction du chapitre.",
         howto_lines=[
             "Cette grille est destinée à l'évaluateur. Ne la transmettez pas aux parties prenantes : envoyez-leur le questionnaire, qui ne contient que les questions ouvertes et leur raison d'être.",
             "1. Renseignez l'organisation évaluée, les évaluateurs et la date en haut de l'onglet « Grille d'évaluation ».",
@@ -79,7 +79,7 @@ TEXT = {
         date="Date:",
         total="Total",
         radar="Maturity per family of criteria",
-        no_rationale="See the rationale of the equivalent question in chapter 5.",
+        no_rationale="See the rationale of the equivalent question in chapter 5 and the chapter introduction.",
         howto_lines=[
             "This grid is meant for the evaluator. Do not send it to stakeholders: send them the questionnaire, which only contains the open questions and their rationales.",
             "1. Fill in the evaluated organisation, the evaluators and the date at the top of the \"Evaluation grid\" sheet.",
@@ -170,7 +170,7 @@ def build_grid(lang: str, chapters: list[guide.Chapter], out: pathlib.Path) -> N
                 for col in (7, 9, 10):
                     ws.cell(row=row, column=col).fill = INPUT_FILL
                 ws.cell(row=row, column=7).number_format = "0%"
-                ws.cell(row=row, column=8).number_format = "0.##"
+                ws.cell(row=row, column=8).number_format = "General"
                 levels.add(ws.cell(row=row, column=7))
                 row += 1
     last = row - 1
@@ -207,7 +207,7 @@ def build_grid(lang: str, chapters: list[guide.Chapter], out: pathlib.Path) -> N
     summary.add_chart(chart, "F3")
     footer(summary, end + 2, t)
 
-    wb.active = 1
+    wb.active = 0
     wb.save(out / t["grid_file"])
 
 

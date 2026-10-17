@@ -2,7 +2,7 @@
 
 Le guide est écrit en **Markdown** dans ce dépôt. À chaque modification validée, un robot reconstruit le site bilingue, les PDF, les grilles Excel et les données ouvertes : **personne ne met en page à la main**.
 
-Pas besoin d'être développeur : tout se fait dans le navigateur.
+Vous contribuez depuis votre navigateur, sans rien installer.
 
 ## 1. Signaler un problème ou proposer une idée
 
@@ -13,7 +13,7 @@ Ouvrez une [issue](https://github.com/Institut-du-Numerique-Responsable/guide-ma
 1. Sur le site, cliquez sur l'icône **crayon** (« Modifier cette page ») en haut de la page concernée, ou ouvrez le fichier dans `docs/fr/` ou `docs/en/`.
 2. Faites votre modification dans l'éditeur GitHub.
 3. En bas : « Commit changes » → cochez **« Create a new branch and start a pull request »** → décrivez votre changement.
-4. Les relecteurs du groupe de travail commentent, puis approuvent. Une fois la proposition fusionnée, tout est republié automatiquement.
+4. Les relecteurs du groupe de travail commentent, puis approuvent. Dès la fusion, GitHub Actions republie le site, les PDF et les classeurs.
 
 ## 3. Règles à respecter
 
@@ -23,7 +23,7 @@ Ouvrez une [issue](https://github.com/Institut-du-Numerique-Responsable/guide-ma
 
 ### Structure d'une question (ne pas casser)
 
-Les grilles Excel, le CSV et le JSON sont extraits automatiquement du Markdown. Chaque question suit ce modèle :
+Les scripts lisent les grilles Excel, le CSV et le JSON dans le Markdown. Chaque question suit ce modèle :
 
 ```markdown
 ## 3.2 Comment évaluez-vous l'impact environnemental … ? {#q3-2}
@@ -44,7 +44,7 @@ Texte libre.
 - la somme des pondérations d'une question égale le total annoncé, et chaque chapitre totalise **100 points** ;
 - dans une cellule, un retour à la ligne s'écrit `<br>` et une puce `<br>• `.
 
-Le contrôle automatique (`python scripts/guide.py check`) vérifie tout cela sur chaque pull request et indique précisément ce qui ne va pas.
+Le contrôle automatique (`python scripts/guide.py check`) vérifie ces règles sur chaque pull request et indique la page, la question et la ligne en cause.
 
 ### Écriture
 
@@ -58,7 +58,7 @@ Le contrôle automatique (`python scripts/guide.py check`) vérifie tout cela su
 proposition (issue ou pull request) → relecture (≥ 1 membre du groupe de travail) → fusion → publication automatique
 ```
 
-- Les corrections de forme sont fusionnées après une relecture.
+- Un relecteur suffit pour fusionner une correction de forme.
 - Une modification de **critère, priorité ou pondération** est une évolution de méthode : elle est discutée dans l'issue et validée par le groupe de travail avant fusion. Elle entre dans la prochaine version publiée (voir `CHANGELOG.md`).
 - Les relecteurs par défaut sont définis dans `.github/CODEOWNERS`.
 
@@ -74,6 +74,11 @@ make site    # données, Excel, PDF puis site (dans site/)
 make serve   # aperçu sur http://127.0.0.1:8000
 ```
 
-## 6. Licence de vos contributions
+## 6. Pour les mainteneurs
+
+- GitHub Pages est configuré en mode « GitHub Actions » (Settings → Pages → Source). À refaire si le dépôt est recréé ou forké.
+- Publier une version : mettre à jour `version` dans `CITATION.cff` (source unique, reprise dans les PDF et les classeurs), `CHANGELOG.md` et la page « À propos », puis pousser l'étiquette correspondante, par exemple `git tag v1.3 && git push origin v1.3`. La release vérifie que l'étiquette et la version concordent.
+
+## 7. Licence de vos contributions
 
 En contribuant, vous acceptez que votre contribution soit publiée sous la licence du projet : **CC BY-SA 4.0** pour le contenu, **MIT** pour les scripts. Les contributeurs sont crédités dans `CONTRIBUTORS.md` et sur la page « À propos » du guide.

@@ -24,7 +24,7 @@ Rapport public du groupe de travail de l'[Institut du Numérique Responsable](ht
 | Questionnaire à envoyer aux parties prenantes, sans les critères (français) | [Excel](../assets/downloads/questionnaire-fr.xlsx) |
 | Questionnaire à envoyer aux parties prenantes, sans les critères (anglais) | [Excel](../assets/downloads/questionnaire-en.xlsx) |
 
-Les PDF, classeurs et données sont régénérés automatiquement à chaque modification du texte : ils sont toujours à jour avec ce site.
+Chaque modification du texte relance la production des PDF, des classeurs et des données : vous téléchargez la version publiée sur ce site.
 
 ## Par où commencer ?
 
@@ -35,7 +35,7 @@ Les PDF, classeurs et données sont régénérés automatiquement à chaque modi
 
 ## Contribuer
 
-Le guide évolue avec les retours de ses utilisateurs. Les adhérents de l'INR et toute personne intéressée peuvent proposer une correction ou une évolution sur le [dépôt GitHub](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes) : chaque page du site comporte un lien « Modifier ». Les propositions sont relues par le groupe de travail avant publication. Voir le [guide de contribution](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes/blob/main/CONTRIBUTING.md).
+Le guide évolue avec les retours de ses utilisateurs. Les adhérents de l'INR et toute personne intéressée peuvent proposer une correction ou une évolution sur le [dépôt GitHub](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes) : chaque page du site comporte un lien « Modifier ». Le groupe de travail relit chaque proposition avant publication. Voir le [guide de contribution](https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes/blob/main/CONTRIBUTING.md).
 
 ## Citer ce guide
 

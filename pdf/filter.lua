@@ -7,18 +7,29 @@ function RawInline(el)
   end
 end
 
--- Links to other pages of the site become internal links (anchor) or plain text.
-function Link(el)
-  local target = el.target
-  if target:match("^https?://") or target:match("^mailto:") then
-    return el
-  end
-  local anchor = target:match("#(.+)$")
-  if anchor then
-    el.target = "#" .. anchor
-    return el
-  end
-  return el.content
+-- Links between site pages: keep the link when its anchor exists in the PDF,
+-- otherwise keep only the text (MkDocs and pandoc build anchors differently,
+-- e.g. accents, and Typst refuses links to missing labels).
+local function local_links(doc)
+  local ids = {}
+  doc:walk({
+    Header = function(h) ids[h.identifier] = true end,
+    Span = function(sp) if sp.identifier ~= "" then ids[sp.identifier] = true end end,
+  })
+  return doc:walk({
+    Link = function(el)
+      local target = el.target
+      if target:match("^%a[%w+.-]*:") then
+        return el
+      end
+      local anchor = target:match("#(.+)$")
+      if anchor and ids[anchor] then
+        el.target = "#" .. anchor
+        return el
+      end
+      return el.content
+    end,
+  })
 end
 
 -- Criteria tables: wide text column, narrow priority and weighting columns.
@@ -34,3 +45,8 @@ function Table(tbl)
   end
   return tbl
 end
+
+return {
+  { RawInline = RawInline, Table = Table },
+  { Pandoc = local_links },
+}

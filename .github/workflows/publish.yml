@@ -14,7 +14,8 @@ permissions:
 
 concurrency:
   group: publish-${{ github.ref }}
-  cancel-in-progress: true
+  # Une PR mise à jour annule son build précédent ; un déploiement de main va à son terme.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   PANDOC_VERSION: "3.12.1"
@@ -28,7 +29,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.13"
           cache: pip
           cache-dependency-path: requirements.txt
 
@@ -40,9 +41,9 @@ jobs:
 
       - name: Installer pandoc et Typst
         run: |
-          curl -sSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          curl -fsSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
           sudo dpkg -i pandoc.deb
-          curl -sSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" | tar -xJ
+          curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" | tar -xJ
           sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
           pandoc --version | head -1 && typst --version
 

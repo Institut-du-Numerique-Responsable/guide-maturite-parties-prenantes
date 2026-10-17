@@ -2,7 +2,7 @@
 
 Ce guide est le travail collectif du groupe de travail de l'Institut du Numérique Responsable (INR) et des European Institutes for Sustainable IT (ISIT). Merci à toutes et à tous.
 
-Les personnes qui contribuent via GitHub sont ajoutées ci-dessous lors de la fusion de leur contribution.
+Les mainteneurs ajoutent ci-dessous chaque personne dont une contribution GitHub est fusionnée.
 
 ## Conception et rédaction
 

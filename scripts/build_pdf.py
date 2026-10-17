@@ -11,10 +11,12 @@ import pathlib
 import subprocess
 import sys
 
+import guide
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 PDF = ROOT / "pdf"
-VERSION = "1.2"
+VERSION = guide.version()
 
 # Page order in the PDF (the home page is site-only).
 PAGES = ["about", "synthesis", "introduction", "why", "how-to-use"] + [

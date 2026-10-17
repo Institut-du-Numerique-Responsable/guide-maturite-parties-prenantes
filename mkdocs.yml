@@ -136,3 +136,6 @@ extra:
       link: https://institutnr.org/guide-maturite-parties-prenantes
     - icon: fontawesome/brands/github
       link: https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes
+
+validation:
+  anchors: warn
