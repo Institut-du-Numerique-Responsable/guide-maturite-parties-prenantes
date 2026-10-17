@@ -12,6 +12,7 @@ Usage: python scripts/build_xlsx.py OUT_DIR
 from __future__ import annotations
 
 import pathlib
+import re
 import sys
 
 from openpyxl import Workbook
@@ -47,6 +48,7 @@ TEXT = {
         date="Date :",
         total="Total",
         radar="Maturité par famille de critères",
+        radar_label="Libellé du radar",
         no_rationale="Voir la raison d'être de la question équivalente au chapitre 5 et l'introduction du chapitre.",
         howto_lines=[
             "Cette grille est destinée à l'évaluateur. Ne la transmettez pas aux parties prenantes : envoyez-leur le questionnaire, qui ne contient que les questions ouvertes et leur raison d'être.",
@@ -79,6 +81,7 @@ TEXT = {
         date="Date:",
         total="Total",
         radar="Maturity per family of criteria",
+        radar_label="Radar label",
         no_rationale="See the rationale of the equivalent question in chapter 5 and the chapter introduction.",
         howto_lines=[
             "This grid is meant for the evaluator. Do not send it to stakeholders: send them the questionnaire, which only contains the open questions and their rationales.",
@@ -104,6 +107,16 @@ THIN = Side(style="thin", color="BFBFBF")
 BOX = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 WRAP = Alignment(wrap_text=True, vertical="top")
 CENTER = Alignment(horizontal="center", vertical="top", wrap_text=True)
+
+
+def short_title(title: str) -> str:
+    """'Chapitre 4 : Fin d'utilisation / fin de vie…' -> '4. Fin d'utilisation' (radar labels)."""
+    m = re.match(r"^\D*(\d+)\s*:\s*(.*)$", title)
+    num, rest = (m.group(1), m.group(2)) if m else ("", title)
+    rest = re.split(r"\s*[/(]", rest)[0].strip()
+    if len(rest) > 40:
+        rest = rest[:39].rsplit(" ", 1)[0] + "…"
+    return f"{num}. {rest}" if num else rest
 
 
 def header(ws, row: int, labels: list[str], widths: list[int]) -> None:
@@ -182,14 +195,15 @@ def build_grid(lang: str, chapters: list[guide.Chapter], out: pathlib.Path) -> N
 
     summary = wb.create_sheet(t["summary"], 1)
     title_block(summary, t, t["summary"])
-    header(summary, 3, t["scols"], [55, 16, 16, 12])
+    header(summary, 3, t["scols"] + [t["radar_label"]], [55, 16, 16, 12, 34])
     grid = "'" + t["grid_title"].replace("'", "''") + "'"
     for i, ch in enumerate(chapters, start=4):
         summary.cell(row=i, column=1, value=ch.title).alignment = WRAP
         summary.cell(row=i, column=2, value=f"=SUMIF({grid}!$A${first + 1}:$A${last},A{i},{grid}!$F${first + 1}:$F${last})")
         summary.cell(row=i, column=3, value=f"=SUMIF({grid}!$A${first + 1}:$A${last},A{i},{grid}!$H${first + 1}:$H${last})")
         summary.cell(row=i, column=4, value=f"=IF(B{i}=0,0,C{i}/B{i})").number_format = "0%"
-        for col in range(1, 5):
+        summary.cell(row=i, column=5, value=short_title(ch.title))
+        for col in range(1, 6):
             summary.cell(row=i, column=col).border = BOX
     end = 3 + len(chapters)
     summary.conditional_formatting.add(f"D4:D{end}", CellIsRule(operator="lessThan", formula=["0.25"], fill=PatternFill("solid", fgColor="F8D7DA")))
@@ -199,12 +213,13 @@ def build_grid(lang: str, chapters: list[guide.Chapter], out: pathlib.Path) -> N
     chart.title = t["radar"]
     chart.style = 26
     chart.add_data(Reference(summary, min_col=4, min_row=3, max_row=end), titles_from_data=True)
-    chart.set_categories(Reference(summary, min_col=1, min_row=4, max_row=end))
+    chart.set_categories(Reference(summary, min_col=5, min_row=4, max_row=end))
     chart.y_axis.scaling.min = 0
     chart.y_axis.scaling.max = 1
     chart.y_axis.number_format = "0%"
+    chart.legend = None
     chart.height, chart.width = 11, 18
-    summary.add_chart(chart, "F3")
+    summary.add_chart(chart, "G3")
     footer(summary, end + 2, t)
 
     wb.active = 0
