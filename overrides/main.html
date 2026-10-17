@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{#- Partage social (Open Graph, Twitter) et données structurées schema.org,
+    pour les moteurs de recherche et les moteurs génératifs. -#}
+{% block extrahead %}
+  {%- set lang = config.theme.language -%}
+  {#- with mkdocs-static-i18n, the English home page is not page.is_homepage -#}
+  {%- set is_home = page and (page.is_homepage or page.url == lang ~ "/") -%}
+  {%- set root = config.extra.root_url -%}
+  {%- set desc = page.meta.description if page and page.meta and page.meta.description else config.site_description -%}
+  {%- set title = (page.title ~ " | " ~ config.site_name) if page and page.title and not is_home else config.site_name -%}
+  <meta property="og:type" content="{{ 'website' if is_home else 'article' }}">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ desc }}">
+  {%- if page and page.canonical_url %}
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  {%- endif %}
+  <meta property="og:image" content="{{ root }}assets/images/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="{{ 'fr_FR' if lang == 'fr' else 'en_GB' }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ desc }}">
+  <meta name="twitter:image" content="{{ root }}assets/images/og-cover.png">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="{{ root }}llms.txt">
+  {%- set inr = {"@type": "Organization", "@id": "https://institutnr.org/#organization", "name": "Institut du Numérique Responsable", "alternateName": ["INR", "Institute for Sustainable IT", "ISIT"], "url": "https://institutnr.org/"} -%}
+  {%- set book_id = root ~ "#guide" -%}
+  {%- if is_home %}
+  {%- set dl = root ~ "assets/downloads/" -%}
+  {%- set graph = [
+    {
+      "@type": "Book",
+      "@id": book_id,
+      "name": "Guide d'évaluation et d'influence de la maturité numérique responsable des parties prenantes",
+      "alternateName": "Guide to evaluating and influencing the maturity of stakeholders in Sustainable IT",
+      "description": config.site_description,
+      "url": root,
+      "sameAs": ["https://institutnr.org/guide-maturite-parties-prenantes", config.repo_url],
+      "inLanguage": ["fr", "en"],
+      "bookEdition": config.extra.guide_version,
+      "version": config.extra.guide_version,
+      "datePublished": "2024-12",
+      "author": inr,
+      "publisher": inr,
+      "copyrightHolder": inr,
+      "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "isAccessibleForFree": true,
+      "keywords": "numérique responsable, sustainable IT, green IT, maturité, parties prenantes, achats responsables, évaluation fournisseurs, RSE",
+      "workExample": [
+        {"@type": "Book", "bookFormat": "https://schema.org/EBook", "encodingFormat": "application/pdf", "inLanguage": "fr", "url": dl ~ "guide-maturite-parties-prenantes-fr.pdf"},
+        {"@type": "Book", "bookFormat": "https://schema.org/EBook", "encodingFormat": "application/pdf", "inLanguage": "en", "url": dl ~ "stakeholder-maturity-guide-en.pdf"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Grille d'évaluation de la maturité numérique responsable des parties prenantes / Stakeholder Sustainable IT maturity evaluation grid",
+      "description": "48 questions ouvertes et leurs critères d'évaluation pondérés (priorité P1 à P3, 100 points par famille), en français et en anglais.",
+      "url": root,
+      "isBasedOn": book_id,
+      "creator": inr,
+      "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "isAccessibleForFree": true,
+      "inLanguage": ["fr", "en"],
+      "distribution": [
+        {"@type": "DataDownload", "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "contentUrl": dl ~ "grille-evaluation-fr.xlsx"},
+        {"@type": "DataDownload", "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "contentUrl": dl ~ "evaluation-grid-en.xlsx"},
+        {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": dl ~ "grille-fr.csv"},
+        {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": dl ~ "grille-en.csv"},
+        {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": dl ~ "grille-fr.json"},
+        {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": dl ~ "grille-en.json"}
+      ]
+    }
+  ] -%}
+  {%- else %}
+  {%- set graph = [{
+      "@type": "WebPage",
+      "name": page.title if page else config.site_name,
+      "description": desc,
+      "url": page.canonical_url if page else root,
+      "inLanguage": lang,
+      "isPartOf": {"@id": book_id},
+      "publisher": inr,
+      "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }] -%}
+  {%- endif %}
+  <script type="application/ld+json">{{ {"@context": "https://schema.org", "@graph": graph} | tojson }}</script>
+{% endblock %}

@@ -52,6 +52,7 @@ jobs:
           python scripts/guide.py json docs/assets/downloads
           python scripts/build_xlsx.py docs/assets/downloads
           python scripts/build_pdf.py docs/assets/downloads
+          python scripts/build_llms.py docs
 
       - name: Construire le site (strict)
         run: |

@@ -25,6 +25,8 @@ docs/assets/           logos et feuille de style du site
 scripts/guide.py       lecture de la grille depuis le Markdown, contrôles, export JSON/CSV
 scripts/build_xlsx.py  grilles et questionnaires Excel
 scripts/build_pdf.py   PDF (pandoc → Typst), gabarit et polices dans pdf/
+scripts/build_llms.py  llms.txt et llms-full.txt pour les moteurs génératifs
+hooks/, overrides/     descriptions, Open Graph et données structurées schema.org du site
 tools/conversion/      scripts de la conversion initiale Word/PDF → Markdown (historique)
 mkdocs.yml             site bilingue (MkDocs Material + mkdocs-static-i18n)
 .github/workflows/     publication, releases, vérification mensuelle des liens

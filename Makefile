@@ -4,9 +4,9 @@
 PYTHON ?= python3
 OUT := docs/assets/downloads
 
-.PHONY: all check data xlsx pdf site serve clean
+.PHONY: all check data xlsx pdf llms site serve clean
 
-all: check data xlsx pdf site
+all: check data xlsx pdf llms site
 
 check:      ## Cohérence de la grille (totaux, parité FR/EN)
 	$(PYTHON) scripts/guide.py check
@@ -20,11 +20,14 @@ xlsx:       ## Grille d'évaluation et questionnaire Excel
 pdf:        ## Guides PDF français et anglais
 	$(PYTHON) scripts/build_pdf.py $(OUT)
 
-site: data xlsx pdf  ## Site bilingue (les téléchargements doivent exister : build strict)
+llms:       ## llms.txt et llms-full.txt pour les moteurs génératifs
+	$(PYTHON) scripts/build_llms.py docs
+
+site: data xlsx pdf llms  ## Site bilingue (les téléchargements doivent exister : build strict)
 	mkdocs build --strict
 
-serve: data xlsx pdf
+serve: data xlsx pdf llms
 	mkdocs serve
 
 clean:
-	rm -rf site build $(OUT)
+	rm -rf site build $(OUT) docs/llms.txt docs/llms-full.txt

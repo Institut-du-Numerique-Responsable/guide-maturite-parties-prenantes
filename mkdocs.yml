@@ -16,6 +16,7 @@ docs_dir: docs
 theme:
   name: material
   language: fr
+  custom_dir: overrides
   font: false
   logo: assets/images/favicon.png
   favicon: assets/images/favicon.png
@@ -126,11 +127,16 @@ plugins:
             À propos: About
             Licence et citation: Licence & citation
 
+hooks:
+  - hooks/seo.py
+
 extra_css:
   - assets/extra.css
 
 extra:
   generator: false
+  # URL racine du site (images de partage, llms.txt, données structurées).
+  root_url: https://institut-du-numerique-responsable.github.io/guide-maturite-parties-prenantes/
   social:
     - icon: fontawesome/solid/globe
       link: https://institutnr.org/guide-maturite-parties-prenantes

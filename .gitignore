@@ -9,3 +9,5 @@ __pycache__/
 .remember/
 .cache/
 docs/assets/downloads/
+docs/llms.txt
+docs/llms-full.txt
