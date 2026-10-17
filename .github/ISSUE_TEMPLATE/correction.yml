@@ -1,0 +1,25 @@
+name: Correction
+description: Signaler une erreur, une formulation peu claire ou un lien mort.
+title: "[Correction] "
+labels: [correction]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page ou question concernée
+      placeholder: "ex. chapitre 3, question 3.2"
+    validations:
+      required: true
+  - type: dropdown
+    id: langue
+    attributes:
+      label: Langue
+      options: [Français, Anglais, Les deux]
+    validations:
+      required: true
+  - type: textarea
+    id: texte
+    attributes:
+      label: Texte actuel et correction proposée
+    validations:
+      required: true

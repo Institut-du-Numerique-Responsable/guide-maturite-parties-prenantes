@@ -1,0 +1,41 @@
+name: Publier une version
+
+# Pousser une étiquette vX.Y (ex. v1.2) crée une release GitHub avec les PDF,
+# les classeurs Excel et les données en pièces jointes : archive pérenne de
+# chaque version validée du guide.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  PANDOC_VERSION: "3.12.1"
+  TYPST_VERSION: "0.15.1"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python scripts/guide.py check
+      - name: Installer pandoc et Typst
+        run: |
+          curl -sSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          sudo dpkg -i pandoc.deb
+          curl -sSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" | tar -xJ
+          sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+      - name: Générer les livrables
+        run: |
+          python scripts/guide.py json dist
+          python scripts/build_xlsx.py dist
+          python scripts/build_pdf.py dist
+      - name: Créer la release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --title "Guide $GITHUB_REF_NAME" --notes "Voir CHANGELOG.md. Licence CC BY-SA 4.0 : toute réutilisation doit citer l'Institut du Numérique Responsable."

@@ -1,0 +1,49 @@
+/* Couleurs de l'INR (logo) et lisibilité des grilles de critères. */
+:root,
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #00668b;
+  --md-primary-fg-color--light: #0084aa;
+  --md-primary-fg-color--dark: #004f6b;
+  --md-accent-fg-color: #0084aa;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #00668b;
+  --md-accent-fg-color: #4fb3d4;
+}
+
+/* Tableaux de critères (3 colonnes) : texte large, priorité et pondération étroites et centrées. */
+.md-typeset table:not([class]) {
+  font-size: 0.72rem;
+}
+
+.md-typeset table:not([class]):has(th:nth-child(3):last-child) {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.md-typeset table:has(th:nth-child(3):last-child) th:first-child { width: 64%; }
+.md-typeset table:has(th:nth-child(3):last-child) th:nth-child(2) { width: 15%; }
+.md-typeset table:has(th:nth-child(3):last-child) th:nth-child(3) { width: 21%; }
+
+.md-typeset table:has(th:nth-child(3):last-child) :is(th, td):nth-child(n + 2) {
+  text-align: center;
+}
+
+/* Tableaux à 2 colonnes (téléchargements, historique) : libellé court, détail large. */
+.md-typeset table:not([class]):has(th:nth-child(2):last-child) {
+  display: table;
+  width: 100%;
+}
+
+/* Titres de questions : numéro bien visible. */
+.md-typeset h2[id^="q"] {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  padding-top: 1rem;
+}
+
+/* Logo de l'en-tête en blanc sur la barre aux couleurs de l'INR. */
+.md-header__button.md-logo img {
+  filter: brightness(0) invert(1);
+}

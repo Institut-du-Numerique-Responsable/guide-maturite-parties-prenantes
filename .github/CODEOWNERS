@@ -1,0 +1,7 @@
+# Relecteurs par défaut : toute pull request leur est soumise.
+*                 @gridboy @vincentcourboulay
+
+# Les critères, priorités et pondérations engagent la méthode du guide :
+# relecture obligatoire par le groupe de travail.
+/docs/*/chapters/ @gridboy @vincentcourboulay
+/scripts/         @gridboy
