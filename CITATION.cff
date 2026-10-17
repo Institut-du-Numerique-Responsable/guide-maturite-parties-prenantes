@@ -1,0 +1,39 @@
+# Métadonnées de citation (Citation File Format 1.2.0).
+# Toute réutilisation du guide doit citer l'Institut du Numérique Responsable.
+cff-version: 1.2.0
+message: "Toute réutilisation de ce guide, totale ou partielle, doit citer l'Institut du Numérique Responsable comme ci-dessous. / Any reuse of this guide must cite the Institut du Numérique Responsable as below."
+type: dataset
+title: "Guide d'évaluation et d'influence de la maturité numérique responsable des parties prenantes / Guide to evaluating and influencing the maturity of stakeholders in Sustainable IT"
+abstract: "Référentiel bilingue de 48 questions ouvertes et de critères pondérés, répartis en 10 familles, pour évaluer et influencer la maturité numérique responsable des parties prenantes (fournisseurs, prestataires, partenaires)."
+version: "1.2"
+date-released: 2026-10-17
+authors:
+  - name: "Institut du Numérique Responsable"
+    alias: "INR / ISIT"
+    website: "https://institutnr.org"
+  - given-names: "Boris"
+    family-names: "Dolley"
+    affiliation: "RTE"
+  - given-names: "Emmanuel"
+    family-names: "Laroche"
+    affiliation: "Sopra Steria"
+  - given-names: "Vincent"
+    family-names: "Courboulay"
+    affiliation: "Institut du Numérique Responsable"
+  - given-names: "Guillaume"
+    family-names: "Gallon"
+    alias: "gridboy"
+    affiliation: "Institut du Numérique Responsable"
+repository-code: "https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes"
+url: "https://institutnr.org/guide-maturite-parties-prenantes"
+license: CC-BY-SA-4.0
+keywords:
+  - "numerique-responsable"
+  - "sustainable-it"
+  - "green-it"
+  - "maturite"
+  - "parties-prenantes"
+  - "achats-responsables"
+  - "evaluation-fournisseurs"
+  - "inr"
+  - "isit"

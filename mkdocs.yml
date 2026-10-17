@@ -1,0 +1,138 @@
+site_name: Guide de maturité des parties prenantes
+site_description: >-
+  Guide d'évaluation et d'influence de la maturité numérique responsable des
+  parties prenantes : 10 familles de critères, 48 questions ouvertes et une
+  grille pondérée. Institut du Numérique Responsable (INR / ISIT).
+site_url: https://institut-du-numerique-responsable.github.io/guide-maturite-parties-prenantes/
+repo_url: https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes
+repo_name: INR/guide-maturite-parties-prenantes
+edit_uri: edit/main/docs/
+site_author: Institut du Numérique Responsable (INR / ISIT)
+copyright: >-
+  © Institut du Numérique Responsable (INR / ISIT). Contenu sous licence
+  CC BY-SA 4.0 : toute réutilisation doit citer l'INR.
+docs_dir: docs
+
+theme:
+  name: material
+  language: fr
+  font: false
+  logo: assets/images/favicon.png
+  favicon: assets/images/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Mode sombre
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Mode clair
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Accueil: index.md
+  - Le guide:
+      - Synthèse: synthesis.md
+      - Introduction: introduction.md
+      - Pourquoi ce guide ?: why.md
+      - Comment l'utiliser ?: how-to-use.md
+  - Les 10 familles de critères:
+      - 1. Gouvernance et stratégie: chapters/01-governance-strategy.md
+      - 2. Formation et compétences: chapters/02-training-competences.md
+      - 3. Mesurer: chapters/03-measuring.md
+      - 4. Fin de vie et économie circulaire: chapters/04-end-of-life-circular-economy.md
+      - 5. Infrastructures internes: chapters/05-internal-infrastructures.md
+      - 6. Infrastructures externes: chapters/06-external-infrastructures.md
+      - 7. Utilisation et achats: chapters/07-usage-procurement.md
+      - 8. Contribution à l'écosystème: chapters/08-ecosystem-contribution.md
+      - 9. Services numériques: chapters/09-digital-services.md
+      - 10. Impacts sociétaux: chapters/10-societal-impacts.md
+  - Annexes:
+      - Glossaire: glossary.md
+      - Bibliographie: bibliography.md
+      - À propos: about.md
+      - Licence et citation: license.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 2
+  - pymdownx.magiclink
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: fr
+          name: Français
+          default: true
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: Stakeholder maturity guide
+          site_description: >-
+            Guide to evaluating and influencing the Sustainable IT maturity of
+            stakeholders: 10 families of criteria, 48 open questions and a
+            weighted grid. Institut du Numérique Responsable (INR / ISIT).
+          copyright: >-
+            © Institut du Numérique Responsable (INR / ISIT). Content licensed
+            under CC BY-SA 4.0: any reuse must cite the INR.
+          nav_translations:
+            Accueil: Home
+            Le guide: The guide
+            Synthèse: Synthesis
+            Pourquoi ce guide ?: Why this guide?
+            Comment l'utiliser ?: How to use it?
+            Les 10 familles de critères: The 10 families of criteria
+            1. Gouvernance et stratégie: 1. Governance & strategy
+            2. Formation et compétences: 2. Training & competences
+            3. Mesurer: 3. Measuring
+            4. Fin de vie et économie circulaire: 4. End of life & circular economy
+            5. Infrastructures internes: 5. Internal infrastructures
+            6. Infrastructures externes: 6. External infrastructures
+            7. Utilisation et achats: 7. Usage & procurement
+            8. Contribution à l'écosystème: 8. Ecosystem contribution
+            9. Services numériques: 9. Digital services
+            10. Impacts sociétaux: 10. Societal impacts
+            Annexes: Appendices
+            Glossaire: Glossary
+            Bibliographie: Bibliography
+            À propos: About
+            Licence et citation: Licence & citation
+
+extra_css:
+  - assets/extra.css
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://institutnr.org/guide-maturite-parties-prenantes
+    - icon: fontawesome/brands/github
+      link: https://github.com/Institut-du-Numerique-Responsable/guide-maturite-parties-prenantes

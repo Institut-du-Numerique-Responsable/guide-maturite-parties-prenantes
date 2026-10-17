@@ -1,0 +1,17 @@
+name: Traduction
+description: Signaler un écart entre les versions française et anglaise.
+title: "[Traduction] "
+labels: [traduction]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page ou question concernée
+    validations:
+      required: true
+  - type: textarea
+    id: ecart
+    attributes:
+      label: Écart constaté et traduction proposée
+    validations:
+      required: true

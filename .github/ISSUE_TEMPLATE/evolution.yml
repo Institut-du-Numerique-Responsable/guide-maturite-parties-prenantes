@@ -1,0 +1,26 @@
+name: Évolution de la méthode
+description: Proposer d'ajouter, modifier ou supprimer un critère, une priorité ou une pondération.
+title: "[Évolution] "
+labels: [méthode]
+body:
+  - type: input
+    id: question
+    attributes:
+      label: Question concernée
+      placeholder: "ex. 5.3"
+    validations:
+      required: true
+  - type: textarea
+    id: proposition
+    attributes:
+      label: Proposition
+      description: Critère actuel, critère proposé, priorité (P1 à P3) et pondération. Rappel : chaque chapitre totalise 100 points.
+    validations:
+      required: true
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justification
+      description: Retour d'usage, réglementation, référentiel ou étude à l'appui (avec source).
+    validations:
+      required: true
