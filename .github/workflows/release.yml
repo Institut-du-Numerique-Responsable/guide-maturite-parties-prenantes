@@ -46,4 +46,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/* --title "Guide $GITHUB_REF_NAME" --notes "Voir CHANGELOG.md. Licence CC BY-SA 4.0 : toute réutilisation doit citer l'Institut du Numérique Responsable."
+          gh release create "$GITHUB_REF_NAME" dist/*.pdf --title "Guide $GITHUB_REF_NAME" --notes "Voir CHANGELOG.md. Licence CC BY-SA 4.0 : toute réutilisation doit citer l'Institut du Numérique Responsable."

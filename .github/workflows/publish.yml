@@ -54,6 +54,9 @@ jobs:
           python scripts/build_pdf.py docs/assets/downloads
           python scripts/build_llms.py docs
 
+      - name: Réserver les classeurs Excel aux adhérents
+        run: rm -f docs/assets/downloads/*.xlsx
+
       - name: Construire le site (strict)
         run: |
           mkdocs build --strict
@@ -63,7 +66,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: livrables
-          path: docs/assets/downloads/
+          path: docs/assets/downloads/*.pdf
           retention-days: 30
 
       - uses: actions/upload-pages-artifact@v3

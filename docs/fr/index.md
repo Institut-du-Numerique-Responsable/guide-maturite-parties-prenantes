@@ -19,10 +19,9 @@ Rapport public du groupe de travail de l'[Institut du Numérique Responsable](ht
 |---|---|
 | Guide complet en français | [PDF](../assets/downloads/guide-maturite-parties-prenantes-fr.pdf) |
 | Guide complet en anglais | [PDF](../assets/downloads/stakeholder-maturity-guide-en.pdf) |
-| Grille d'évaluation, pour l'évaluateur (français) | [Excel](../assets/downloads/grille-evaluation-fr.xlsx) · [CSV](../assets/downloads/grille-fr.csv) · [JSON](../assets/downloads/grille-fr.json) |
-| Grille d'évaluation, pour l'évaluateur (anglais) | [Excel](../assets/downloads/evaluation-grid-en.xlsx) · [CSV](../assets/downloads/grille-en.csv) · [JSON](../assets/downloads/grille-en.json) |
-| Questionnaire à envoyer aux parties prenantes, sans les critères (français) | [Excel](../assets/downloads/questionnaire-fr.xlsx) |
-| Questionnaire à envoyer aux parties prenantes, sans les critères (anglais) | [Excel](../assets/downloads/questionnaire-en.xlsx) |
+| Grilles d'évaluation et questionnaire Excel | [Accès réservé aux adhérents de l'INR](https://members.isit-europe.org/guide-maturite-parties-prenantes/) |
+| Données ouvertes de la grille (français) | [CSV](../assets/downloads/grille-fr.csv) · [JSON](../assets/downloads/grille-fr.json) |
+| Open grid data (English) | [CSV](../assets/downloads/grille-en.csv) · [JSON](../assets/downloads/grille-en.json) |
 
 Chaque modification du texte relance la production des PDF, des classeurs et des données : vous téléchargez la version publiée sur ce site.
 

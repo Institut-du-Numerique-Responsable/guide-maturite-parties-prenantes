@@ -19,10 +19,9 @@ Public report of the workgroup of the [Institut du Numérique Responsable](https
 |---|---|
 | Full guide in English | [PDF](../assets/downloads/stakeholder-maturity-guide-en.pdf) |
 | Full guide in French | [PDF](../assets/downloads/guide-maturite-parties-prenantes-fr.pdf) |
-| Evaluation grid, for the evaluator (English) | [Excel](../assets/downloads/evaluation-grid-en.xlsx) · [CSV](../assets/downloads/grille-en.csv) · [JSON](../assets/downloads/grille-en.json) |
-| Evaluation grid, for the evaluator (French) | [Excel](../assets/downloads/grille-evaluation-fr.xlsx) · [CSV](../assets/downloads/grille-fr.csv) · [JSON](../assets/downloads/grille-fr.json) |
-| Questionnaire to send to stakeholders, without the criteria (English) | [Excel](../assets/downloads/questionnaire-en.xlsx) |
-| Questionnaire to send to stakeholders, without the criteria (French) | [Excel](../assets/downloads/questionnaire-fr.xlsx) |
+| Excel evaluation grids and questionnaire | [Reserved for INR members](https://members.isit-europe.org/guide-maturite-parties-prenantes/) |
+| Open grid data (English) | [CSV](../assets/downloads/grille-en.csv) · [JSON](../assets/downloads/grille-en.json) |
+| Données ouvertes de la grille (français) | [CSV](../assets/downloads/grille-fr.csv) · [JSON](../assets/downloads/grille-fr.json) |
 
 Each change to the text triggers a rebuild of the PDFs, workbooks and data, so the files you download match this site.
 
